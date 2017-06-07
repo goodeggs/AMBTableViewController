@@ -31,12 +31,9 @@
  - Sections and individual rows can be hidden/shown, added/removed.
  - Support for dynamic height cells.
  */
-@interface AMBTableViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface AMBTableViewController : UITableViewController
 
 /// @name Properties
-
-/// The managed table view.
-@property (weak, nonatomic) IBOutlet UITableView * tableView;
 
 /// The presented sections.
 @property (strong, nonatomic) NSArray * sections;
