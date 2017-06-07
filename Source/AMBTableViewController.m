@@ -325,7 +325,8 @@
     {
         section.cellConfigurationBlock(object,
                                        cell,
-                                       indexPath);
+                                       indexPath,
+                                       self);
     }
     
     return cell;

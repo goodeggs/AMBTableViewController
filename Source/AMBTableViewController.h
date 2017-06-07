@@ -158,7 +158,8 @@ typedef NSString * (^AMBTableViewCellIdentifierBlock) (id object,
 /// @param indexPath The index path of the corresponding cell.
 typedef void (^AMBTableViewCellConfigurationBlock)(id object,
                                                    UITableViewCell * cell,
-                                                   NSIndexPath * indexPath);
+                                                   NSIndexPath * indexPath,
+                                                   AMBTableViewController *controller);
 
 
 /**
