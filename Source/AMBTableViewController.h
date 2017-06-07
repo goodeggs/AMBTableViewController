@@ -31,12 +31,9 @@
  - Sections and individual rows can be hidden/shown, added/removed.
  - Support for dynamic height cells.
  */
-@interface AMBTableViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface AMBTableViewController : UITableViewController
 
 /// @name Properties
-
-/// The managed table view.
-@property (weak, nonatomic) IBOutlet UITableView * tableView;
 
 /// The presented sections.
 @property (strong, nonatomic) NSArray * sections;
@@ -161,7 +158,12 @@ typedef NSString * (^AMBTableViewCellIdentifierBlock) (id object,
 /// @param indexPath The index path of the corresponding cell.
 typedef void (^AMBTableViewCellConfigurationBlock)(id object,
                                                    UITableViewCell * cell,
-                                                   NSIndexPath * indexPath);
+                                                   NSIndexPath * indexPath,
+                                                   AMBTableViewController *controller);
+
+typedef void (^AMBTableViewCellOnSelectBlock)(id object,
+                                                   NSIndexPath * indexPath,
+                                                   AMBTableViewController *controller);
 
 
 /**
@@ -226,6 +228,8 @@ typedef void (^AMBTableViewCellConfigurationBlock)(id object,
 
 /// An optional block to be called to configure a loaded or reused cell.
 @property (copy, nonatomic)             AMBTableViewCellConfigurationBlock cellConfigurationBlock;
+
+@property (copy, nonatomic)             AMBTableViewCellOnSelectBlock onSelectRow;
 
 /// @name Managing Objects
 

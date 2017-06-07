@@ -49,14 +49,6 @@
             stringByReplacingOccurrencesOfString:@"\n)>\"" withString:@"\n    )>\""];
 }
 
-- (void)setTableView:(UITableView *)tableView
-{
-    _tableView = tableView;
-    
-    tableView.dataSource = self;
-    tableView.delegate = self;
-}
-
 #pragma mark - Managing sections
 
 - (void)setSections:(NSArray *)sections
@@ -333,7 +325,8 @@
     {
         section.cellConfigurationBlock(object,
                                        cell,
-                                       indexPath);
+                                       indexPath,
+                                       self);
     }
     
     return cell;
@@ -361,6 +354,14 @@ titleForHeaderInSection:(NSInteger)sectionIndex
         return section.sectionTitleBlock(section);
     }
     return nil;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    AMBTableViewSection * section = self.sections[indexPath.section];
+    id object = section.objects.count ? section.visibleObjects[indexPath.row] : nil;
+    if (section.onSelectRow) {
+        section.onSelectRow(object, indexPath, self);
+    }
 }
 
 @end
