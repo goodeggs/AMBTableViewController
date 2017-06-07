@@ -356,6 +356,14 @@ titleForHeaderInSection:(NSInteger)sectionIndex
     return nil;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    AMBTableViewSection * section = self.sections[indexPath.section];
+    id object = section.objects.count ? section.visibleObjects[indexPath.row] : nil;
+    if (section.onSelectRow) {
+        section.onSelectRow(object, indexPath, self);
+    }
+}
+
 @end
 
 

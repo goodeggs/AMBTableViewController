@@ -161,6 +161,10 @@ typedef void (^AMBTableViewCellConfigurationBlock)(id object,
                                                    NSIndexPath * indexPath,
                                                    AMBTableViewController *controller);
 
+typedef void (^AMBTableViewCellOnSelectBlock)(id object,
+                                                   NSIndexPath * indexPath,
+                                                   AMBTableViewController *controller);
+
 
 /**
  An object that groups blocks of code to manage rows in a table view section.
@@ -224,6 +228,8 @@ typedef void (^AMBTableViewCellConfigurationBlock)(id object,
 
 /// An optional block to be called to configure a loaded or reused cell.
 @property (copy, nonatomic)             AMBTableViewCellConfigurationBlock cellConfigurationBlock;
+
+@property (copy, nonatomic)             AMBTableViewCellOnSelectBlock onSelectRow;
 
 /// @name Managing Objects
 
